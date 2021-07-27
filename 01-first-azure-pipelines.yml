@@ -40,7 +40,7 @@ stages:
     - script: echo Job1 - Hello, world, changed!
 
 - stage: Script2
-  condition: ne(parameters.destroy, true)
+  condition: ne(parameters['destroy'], true)
   displayName: 'Run a multi-line script'
   jobs:
   - job: Build
