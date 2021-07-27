@@ -31,19 +31,18 @@ pool:
 # Pipelines > Stages > Jobs > Tasks(Steps)
 
 jobs:
-  - job: Job1
-    steps:
-      - script: echo Job1 - Hello, world, changed!
-        displayName: "Run a one-line script"
-
-    - script: |
-        echo Add other tasks to build, test, and deploy your project.
-        echo See https://aka.ms/yaml
-      displayName: "Run a multi-line script"
-    
-    - script: |
-        echo "Output: ${{ ne(parameters.type, 'prod') }}"
-      displayName: "Test Conditional"
+- job: Job1
+  steps:
+  - script: echo Job1 - Hello, world, changed!
+    displayName: 'Run a one-line script'
+  - script: |
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
+      echo more information
+    displayName: 'Run a multi-line script'
+  - script: |
+      echo "Output: ${{ ne(parameters.type, 'prod') }}"
+    displayName: "Test Conditional"
 
 # - job: Job2
 #   dependsOn: Job1
