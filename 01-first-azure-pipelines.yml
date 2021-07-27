@@ -3,6 +3,25 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+parameters:
+  - name: type
+    displayName: "Environment Name"
+    type: string
+    default: "dev"
+    values:
+    - "dev"
+    - "test"
+    - "prod"
+    - "dr"
+ 
+  - name: destroy
+    displayName: "Destroy (Warning: Set to TRUE only if you want layer(s) destroyed)"
+    type: string
+    default: false
+    values:
+    - true
+    - false
+
 trigger:
   - main
 
