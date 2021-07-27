@@ -12,16 +12,15 @@ parameters:
     - "dev"
     - "test"
     - "prod"
-    - "dr"
- 
-  - ${{ ne(parameters.type, 'prod') }}
-    - name: destroy    
-      displayName: "Destroy (Warning: Set to TRUE only if you want layer(s) destroyed)"
-      type: string
-      default: false
-      values:
-      - true
-      - false
+    - "dr" 
+
+  - name: destroy    
+    displayName: "Destroy (Warning: Set to TRUE only if you want layer(s) destroyed)"
+    type: string
+    default: false
+    values:
+    - ${{ ne(parameters.type, 'prod') }}
+    - false
 
 trigger:
   - none
