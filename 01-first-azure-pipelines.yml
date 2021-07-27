@@ -17,7 +17,7 @@ parameters:
   
   - name: destroy    
     displayName: "Destroy (Warning: Set to TRUE only if you want layer(s) destroyed)"
-    type: string
+    type: boolean
     default: false
     values:
     - true
