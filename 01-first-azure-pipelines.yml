@@ -42,7 +42,7 @@ jobs:
       displayName: "Run a multi-line script"
     
     - script: |
-        echo "Output: ${{ not(parameters.type, 'prod') }}"
+        echo "Output: ${{ ne(parameters.type, 'prod') }}"
       displayName: "Test Conditional"
 
 # - job: Job2
