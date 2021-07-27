@@ -38,15 +38,16 @@ stages:
     steps: 
     - script: echo Job1 - Hello, world, changed!
 
-- stage: Script2
-  displayName: 'Run a multi-line script'
-  jobs:
-  - job: Build
-    steps:
-    - script: |
-        echo Add other tasks to build, test, and deploy your project.
-        echo See https://aka.ms/yaml
-        echo more information
+${{ ne(parameters.type, 'prod') }}:
+  - stage: Script2
+    displayName: 'Run a multi-line script'
+    jobs:
+    - job: Build
+      steps:
+      - script: |
+          echo Add other tasks to build, test, and deploy your project.
+          echo See https://aka.ms/yaml
+          echo more information
 
 - stage: Script3
   displayName: 'Test Condition'
