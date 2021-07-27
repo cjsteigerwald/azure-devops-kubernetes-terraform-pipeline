@@ -55,7 +55,7 @@ ${{ ne(parameters.type, 'prod') }}:
   - job: Build
     steps:
     - script: |
-        echo "Output: ${{ ne(parameters.type, 'prod') }}"
+        echo "Output: ${{ ne(parameters.destroy, true) }}"
 # jobs:
 # - job: Job1
 #   steps:
