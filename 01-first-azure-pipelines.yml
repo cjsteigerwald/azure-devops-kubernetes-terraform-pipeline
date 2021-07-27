@@ -19,7 +19,7 @@ parameters:
     type: string
     default: false
     values:
-    - ${{ ne(parameters.type, 'prod') }}
+    - "${{ ne(parameters.type, 'prod') }}"
     - false
 
 trigger:
