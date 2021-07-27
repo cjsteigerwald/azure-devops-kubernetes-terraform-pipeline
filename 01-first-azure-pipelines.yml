@@ -30,20 +30,44 @@ pool:
 
 # Pipelines > Stages > Jobs > Tasks(Steps)
 
-- ${{ ne(parameters.type, 'prod') }}
+stages:
+- stage: Script1
+  displayName: 'Run a one-line script'
   jobs:
-  - job: Job1
-    steps:
+  - job: Build
+    steps: 
     - script: echo Job1 - Hello, world, changed!
-      displayName: 'Run a one-line script'
+
+- stage: Script2
+  displayName: 'Run a multi-line script'
+  jobs:
+  - job: Build
+    steps:
     - script: |
         echo Add other tasks to build, test, and deploy your project.
         echo See https://aka.ms/yaml
         echo more information
-      displayName: 'Run a multi-line script'
+
+- stage: Script3
+  displayName: 'Test Condition'
+  jobs:
+  - job: Build
+    steps:
     - script: |
         echo "Output: ${{ ne(parameters.type, 'prod') }}"
-      displayName: "Test Conditional"
+# jobs:
+# - job: Job1
+#   steps:
+#   - script: echo Job1 - Hello, world, changed!
+#     displayName: 'Run a one-line script'
+#   - script: |
+#       echo Add other tasks to build, test, and deploy your project.
+#       echo See https://aka.ms/yaml
+#       echo more information
+#     displayName: 'Run a multi-line script'
+#   - script: |
+#       echo "Output: ${{ ne(parameters.type, 'prod') }}"
+#     displayName: "Test Conditional"
 
 # - job: Job2
 #   dependsOn: Job1
