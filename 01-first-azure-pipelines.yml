@@ -14,14 +14,14 @@ parameters:
     - "prod"
     - "dr" 
   
-  - ${{ ne(parameters.type, 'prod') }}:
-    - name: destroy    
-      displayName: "Destroy (Warning: Set to TRUE only if you want layer(s) destroyed)"
-      type: string
-      default: false
-      values:
-      - true
-      - false
+  
+  - name: destroy    
+    displayName: "Destroy (Warning: Set to TRUE only if you want layer(s) destroyed)"
+    type: string
+    default: false
+    values:
+    - true
+    - false
 
 trigger:
   - none
@@ -39,16 +39,16 @@ stages:
     steps: 
     - script: echo Job1 - Hello, world, changed!
 
-
-- stage: Script2
-  displayName: 'Run a multi-line script'
-  jobs:
-  - job: Build
-    steps:
-    - script: |
-        echo Add other tasks to build, test, and deploy your project.
-        echo See https://aka.ms/yaml
-        echo more information
+- ${{ ne(parameters.type, 'prod') }}:
+  - stage: Script2
+    displayName: 'Run a multi-line script'
+    jobs:
+    - job: Build
+      steps:
+      - script: |
+          echo Add other tasks to build, test, and deploy your project.
+          echo See https://aka.ms/yaml
+          echo more information
 
 - stage: Script3
   displayName: 'Test Condition'
